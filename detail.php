@@ -108,15 +108,4 @@ $template = [
 
 echo $OUTPUT->header();
 echo $OUTPUT->render_from_template("local_slow_queries/detail", $template);
-
-$prompt = [];
-$prompt[] = "The SQL below is slow ({$querie->avgtime}s). " .
-    "Analyze it and suggest realistic optimizations and indexes for Moodle to make it faster.\n";
-$prompt[] = "# SQL:\n```SQL\n{$expanded}\n```\n";
-$prompt[] = "# Tables involved (metadata):\n{$schemablock}\n";
-$prompt[] = "# Backtrace origin:\n{$querie->backtrace}";
-$prompt[] = "# Return the explanation in " . (isset($SESSION->lang) ? $SESSION->lang : $USER->lang);
-echo $OUTPUT->render_from_template("local_slow_queries/detail_prompt", [
-    "prompt" => implode("\n", $prompt),
-]);
 echo $OUTPUT->footer();
