@@ -107,7 +107,7 @@ class table_schema_service {
                 $type = $c->type ?? "";
                 $len = isset($c->max_length) && $c->max_length ? "({$c->max_length})" : "";
                 $nn = !empty($c->not_null) ? " NOT NULL" : "";
-                $def = property_exists($c, "default_value") && $c->default_value !== null ? " DEFAULT {$c->default_value}"  : "";
+                $def = property_exists($c, "default_value") && $c->default_value !== null ? " DEFAULT {$c->default_value}" : "";
                 $out[] = "  - {$c->name}: " . $type . $len . $nn . $def;
             }
 
