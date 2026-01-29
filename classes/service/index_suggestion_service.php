@@ -518,12 +518,12 @@ class index_suggestion_service {
             return trim($c);
         }, $cols);
 
-        $name = "idx_lsq_" . $table . "_" . implode("_", $cols);
+        $name = "idx_lsq_{$table}_" . implode("_", $cols);
         $name = preg_replace('/[^a-z0-9_]+/i', "_", $name);
         $name = substr(strtolower($name), 0, 60);
 
         $realtable = $prefix . $table;
-        return "CREATE INDEX " . $name . " ON " . $realtable . " (" . implode(", ", $cols) . ");";
+        return "CREATE INDEX {$name} ON {$realtable} (" . implode(", ", $cols) . ");";
     }
 
     /**

@@ -148,7 +148,7 @@ class sql_params_service {
 
         $lines = [];
         foreach ($params as $i => $v) {
-            $lines[] = "[" . $i . "] = " . self::format_param_for_sql($v);
+            $lines[] = "[{$i}] = " . self::format_param_for_sql($v);
         }
         return implode("\n", $lines);
     }
@@ -218,6 +218,6 @@ class sql_params_service {
 
         $s = $value;
         $s = str_replace("'", "''", $s);
-        return "'" . $s . "'";
+        return "'{$s}'";
     }
 }

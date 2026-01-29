@@ -23,7 +23,7 @@
  */
 
 require_once(__DIR__ . "/../../config.php");
-require_once($CFG->libdir . "/tablelib.php");
+require_once("{$CFG->libdir}/tablelib.php");
 
 use local_slow_queries\repository\queries_repository;
 use local_slow_queries\table\home_table;

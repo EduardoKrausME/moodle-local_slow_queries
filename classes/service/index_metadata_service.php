@@ -75,19 +75,19 @@ class index_metadata_service {
             $cols = (array) ($idx["columns"] ?? []);
             $def = $idx["definition"] ?? "";
 
-            $tag = $unique ? "UNIQUE" : "NON-UNIQUE";
+            $tag = $unique ? "UNIQUE" : "INDEX";
 
             if (!empty($cols)) {
-                $lines[] = "- " . $name . " (" . $tag . "): " . implode(", ", $cols);
+                $lines[] = "- {$name} ({$tag}): " . implode(", ", $cols);
                 continue;
             }
 
             if ($def !== "") {
-                $lines[] = "- " . $name . " (" . $tag . "): " . $def;
+                $lines[] = "- {$name} ({$tag}): " . $def;
                 continue;
             }
 
-            $lines[] = "- " . $name . " (" . $tag . ")";
+            $lines[] = "- {$name} ({$tag})";
         }
 
         return implode("\n", $lines);

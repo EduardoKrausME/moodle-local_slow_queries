@@ -151,7 +151,7 @@ class queries_repository {
         $search = trim($search);
         if ($search !== "") {
             $wheres[] = $DB->sql_like("sqltext", ":search", false, false);
-            $params["search"] = "%" . $DB->sql_like_escape($search) . "%";
+            $params["search"] = "%{$DB->sql_like_escape($search)}%";
         }
 
         return [implode(" AND ", $wheres), $params];

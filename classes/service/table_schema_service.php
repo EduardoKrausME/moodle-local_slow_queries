@@ -96,19 +96,19 @@ class table_schema_service {
             try {
                 $cols = $DB->get_columns($moodlename);
             } catch (Throwable) {
-                $out[] = "## TABLE " . $rawname . " (unavailable via metadata)";
+                $out[] = "## TABLE {$rawname} (unavailable via metadata)";
                 $out[] = "";
                 continue;
             }
 
-            $out[] = "## TABLE " . $rawname . " (Moodle name: " . $moodlename . ")";
+            $out[] = "## TABLE {$rawname} (Moodle name: {$moodlename})";
             $out[] = "### Columns:";
             foreach ($cols as $c) {
                 $type = $c->type ?? "";
-                $len = isset($c->max_length) && $c->max_length ? "(" . $c->max_length . ")" : "";
+                $len = isset($c->max_length) && $c->max_length ? "({$c->max_length})" : "";
                 $nn = !empty($c->not_null) ? " NOT NULL" : "";
-                $def = property_exists($c, "default_value") && $c->default_value !== null ? " DEFAULT " . $c->default_value : "";
-                $out[] = "  - " . $c->name . ": " . $type . $len . $nn . $def;
+                $def = property_exists($c, "default_value") && $c->default_value !== null ? " DEFAULT {$c->default_value}"  : "";
+                $out[] = "  - {$c->name}: " . $type . $len . $nn . $def;
             }
 
             // Existing indexes (best-effort).
