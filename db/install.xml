@@ -13,9 +13,6 @@
             <KEYS>
                 <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
             </KEYS>
-            <INDEXES>
-                <INDEX NAME="sqltext" UNIQUE="true" FIELDS="sqltext"/>
-            </INDEXES>
         </TABLE>
     </TABLES>
 </XMLDB>
