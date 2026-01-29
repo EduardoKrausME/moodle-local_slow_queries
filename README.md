@@ -5,8 +5,6 @@
 It focuses on three daily workflows:
 
 - **List & filter** slow queries quickly (default `exectime > 3s`).
-- **Open details** with SQL + parameters and a ready-to-use **ChatGPT prompt** including table schemas.
-- **Use dashboards** to see patterns: top slowest, recurrence, distribution, CRON vs WEB, by qtype, and errors.
 
 > Access is restricted to: `require_capability("moodle/site:config", context_system::instance())`
 
@@ -17,49 +15,6 @@ This plugin **does not capture queries by itself**. It assumes your environment 
 - `mdl_log_queries` (or `{log_queries}` with Moodle prefix)
 
 So the plugin is a **viewer + analysis helper** for an existing slow-query logging mechanism.
-
-## Key screens
-
-### 1) `index.php` — Slow Queries List
-
-The main list is designed for fast triage:
-
-- **Search** within SQL text
-- Filter by:
-    - **Min exec time** (`exectime >= X`, default `X=3`)
-    - `qtype` (optional)
-    - error-only mode (optional)
-- Compact table shows:
-    - **SQL preview**
-    - **Backtrace caller**: the first “user-land” caller right after the `/lib/dml/` frame
-    - **Execution time** (seconds)
-    - **CRON flag** ✅ when `admin/cli/cron.php` is detected in backtrace
-    - Timestamp (timelogged)
-
-Clicking a row opens the detail view.
-
-### 2) `detail.php` — Query Details (2-column view)
-
-The detail screen is optimized to help you **reproduce and reason** about a slow query:
-
-**Top section (row / col-6):**
-- Left card:
-    - Full SQL text
-    - Raw `sqlparams` text as stored
-- Right card:
-    - SQL with parameters applied (best-effort replacement for positional `?` placeholders)
-
-**Below:**
-- A large textarea containing a **ChatGPT prompt** that includes:
-    - SQL already “materialized” with parameters
-    - Detected table list (FROM/JOIN/UPDATE/INTO)
-    - A schema snapshot for those tables using Moodle metadata (`$DB->get_columns()`)
-
-This prompt is intended for:
-- index suggestions
-- query rewrites
-- hypothesis of root causes
-- expected impact & risks
 
 ## Data source
 
@@ -82,9 +37,9 @@ Fields used by the UI:
 Index suggestions in the `install.xml` are focused on viewer performance:
 - `timelogged`, `exectime`, `qtype`, `error`
 
-## Backtrace “caller” logic
+## Backtrace "caller" logic
 
-The list view shows a simplified “caller” derived from backtrace:
+The list view shows a simplified "caller" derived from backtrace:
 
 1. Find the first frame containing `/lib/dml/`
 2. Show the **next frame** (usually the Moodle component that invoked the DB layer)
@@ -95,7 +50,7 @@ completion, search indexing, forum reports, etc.
 
 ## CRON detection
 
-A query is considered “CRON” when its backtrace contains:
+A query is considered "CRON" when its backtrace contains:
 
 - `/admin/cli/cron.php`
 
@@ -110,23 +65,13 @@ This plugin attempts to parse common formats:
 
 - JSON arrays/objects
 - PHP `serialize()` format
-- “var_export-like” output (example: `array ( 0 => 4, 1 => 50, )`)
+- "var_export-like" output (example: `array ( 0 => 4, 1 => 50, )`)
 
 Then it applies parameters to SQL by replacing positional `?` placeholders sequentially.
 
 Notes:
 - This is a **best-effort representation** for analysis and reproduction.
 - It is not intended to be a perfect SQL reconstitution for every edge case.
-
-## Settings
-
-The plugin provides lightweight settings to tune the UI:
-
-- **Default minimum execution time** (`minexectime`)
-- **Records per page** (`perpage`)
-- **SQL preview length** (`previewlen`)
-
-These affect list/report defaults and usability, not the underlying data.
 
 ## UX & UI choices
 
