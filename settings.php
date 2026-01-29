@@ -32,4 +32,3 @@ if ($hassiteconfig) {
     );
     $ADMIN->add('reports', $externalpage);
 }
-
