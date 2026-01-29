@@ -115,7 +115,7 @@ class home_table extends table_sql {
         if ($comments) {
             return
                 html_writer::tag("span", s($origin), ["class" => "text-nowrap-width"]) .
-                html_writer::tag("span", s($comments->comments), ["class" => "small text-muted"]);
+                html_writer::tag("span", s($comments->comments), ["class" => "text-nowrap-width small text-muted"]);
         }
         return html_writer::tag("span", s($origin), ["class" => "text-nowrap-width"]);
     }
