@@ -24,41 +24,32 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$string['pluginname'] = 'Slow queries';
-$string['slow_queries'] = 'Slow queries';
-$string['nav_index'] = 'Slow queries';
-
-$string['filter_title'] = 'Filters';
-$string['filter_search'] = 'Search SQL';
-$string['filter_search_ph'] = 'Type part of the SQL to search...';
-$string['filter_minexec'] = 'Min exec time (s)';
-$string['filter_apply'] = 'Apply';
-$string['filter_reset'] = 'Reset';
-
-$string['col_sqlpreview'] = 'SQL';
-$string['col_parameters'] = 'Parameters';
-$string['col_origin'] = 'Backtrace';
-$string['col_exectime'] = 'Time (s)';
+$string['col_avgtime'] = 'Avg time (s)';
+$string['col_count'] = 'Count';
 $string['col_cron'] = 'CRON';
-
-$string['index_title'] = 'Slow queries';
-$string['detail_title'] = 'Query details';
-
-$string['emptytable'] = 'No queries found for the selected filters.';
-
+$string['col_exectime'] = 'Time (s)';
+$string['col_origin'] = 'Backtrace';
+$string['col_parameters'] = 'Parameters';
+$string['col_sqlpreview'] = 'SQL';
+$string['detail_indexes'] = 'Possible missing indexes';
+$string['detail_indexes_none'] = 'No index suggestions detected for this query.';
+$string['detail_indexes_notice'] = 'Suggestions are heuristic. Test carefully on a staging environment and validate with EXPLAIN/ANALYZE.';
 $string['detail_sql'] = 'SQL and parameters';
 $string['detail_sql_expanded'] = 'SQL with parameters';
-
-$string['detail_indexes'] = 'Possible missing indexes';
-$string['detail_indexes_notice'] = 'Suggestions are heuristic. Test carefully on a staging environment and validate with EXPLAIN/ANALYZE.';
-$string['detail_indexes_none'] = 'No index suggestions detected for this query.';
-
-$string['privacy:metadata'] = 'The Slow queries plugin does not store any personal data. It only displays existing database query log records to administrators.';
-
-$string['logslow_warning_title'] = 'Slow query logging is disabled';
+$string['detail_title'] = 'Query details';
+$string['emptytable'] = 'No queries found for the selected filters.';
+$string['filter_apply'] = 'Apply';
+$string['filter_minexec'] = 'Min exec time (s)';
+$string['filter_reset'] = 'Reset';
+$string['filter_search'] = 'Search SQL';
+$string['filter_search_ph'] = 'Type part of the SQL to search...';
+$string['filter_title'] = 'Filters';
+$string['index_title'] = 'Slow queries';
 $string['logslow_warning_body'] = 'This page reads from <code>mdl_log_queries</code>, but your site is not configured to log slow SQL queries. Enable <code>logslow</code> in <code>config.php</code> (set to <code>true</code> or a number in seconds). Example:';
 $string['logslow_warning_current'] = 'Current value';
 $string['logslow_warning_hint'] = 'After saving <code>config.php</code>, reproduce the slow page/cron task and then refresh this page to see new entries.';
-
-$string['col_count'] = 'Count';
-$string['col_avgtime'] = 'Avg time (s)';
+$string['logslow_warning_title'] = 'Slow query logging is disabled';
+$string['nav_index'] = 'Slow queries';
+$string['pluginname'] = 'Slow queries';
+$string['privacy:metadata'] = 'The Slow queries plugin does not store any personal data. It only displays existing database query log records to administrators.';
+$string['slow_queries'] = 'Slow queries';
