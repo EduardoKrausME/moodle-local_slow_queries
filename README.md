@@ -149,11 +149,6 @@ This is critical because the plugin can reveal:
 - parameters (potentially containing sensitive values)
 - file paths in backtraces
 
-## Privacy
-
-The plugin itself **does not store personal data**.
-It only reads from the existing query log table and displays it.
-
 ## Typical usage patterns
 
 ### Ops triage
