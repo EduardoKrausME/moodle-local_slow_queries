@@ -61,25 +61,6 @@ This prompt is intended for:
 - hypothesis of root causes
 - expected impact & risks
 
-### 3) `report.php` — Reports Dashboard
-
-The report page focuses on trends and prioritization:
-
-- **Overview KPIs**
-    - total slow queries (≥ min time)
-    - last 7 days count
-    - max time
-    - average time
-    - errors count
-- **Execution time distribution**
-    - buckets like 3–5s, 5–10s, 10–20s, 20–40s, 40s+
-- **CRON vs WEB split**
-- **By qtype** summary
-    - count, avg, max, share
-- **Top slowest list** (quick jump to details)
-- **Most recurrent slow queries**
-    - based on a recent sample (up to 3000 rows), grouping by normalized SQL signature
-
 ## Data source
 
 The plugin reads from:
@@ -181,26 +162,7 @@ It only reads from the existing query log table and displays it.
 - Identify CRON-heavy spikes or web-timeouts
 - Open details, extract candidate indexes
 
-### Performance debugging
-- Find a recurring query in `report.php`
-- Open one representative example in `detail.php`
-- Use the ChatGPT prompt to generate:
-    - index DDL
-    - rewrites
-    - join/where improvements
-
 ### Regression monitoring
 - Check last 7 days volume
 - Compare max/avg trends weekly
 - Identify new callers (components) from backtrace changes
-
-## Notes for maintainers
-
-- The plugin does not assume a specific DB driver (MySQL/Postgres/etc) for reading.
-- Schema extraction uses Moodle metadata methods (`$DB->get_columns()`).
-- The report page uses sampling for recurrence to avoid heavy aggregation on very large datasets.
-
-If your `mdl_log_queries` grows into tens/hundreds of millions of rows, consider:
-- partitioning / retention policy
-- more specialized indexes aligned with your typical filters
-- scheduled rollups (optional external process)
