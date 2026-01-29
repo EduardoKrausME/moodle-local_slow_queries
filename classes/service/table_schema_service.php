@@ -101,7 +101,7 @@ class table_schema_service {
                 continue;
             }
 
-            $out[] = "## TABLE {$rawname} (Moodle name: {$moodlename})";
+            $out[] = "## TABLE {$rawname}";
             $out[] = "### Columns:";
             foreach ($cols as $c) {
                 $type = $c->type ?? "";
