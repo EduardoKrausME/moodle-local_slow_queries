@@ -25,11 +25,11 @@
 
 require_once(__DIR__ . "/../../config.php");
 
-use classes\repository\queries_repository;
-use classes\service\backtrace_service;
-use classes\service\index_suggestion_service;
-use classes\service\sql_params_service;
-use classes\service\table_schema_service;
+use local_slow_queries\repository\queries_repository;
+use local_slow_queries\service\backtrace_service;
+use local_slow_queries\service\index_suggestion_service;
+use local_slow_queries\service\sql_params_service;
+use local_slow_queries\service\table_schema_service;
 
 require_login();
 

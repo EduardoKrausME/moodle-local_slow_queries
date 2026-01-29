@@ -24,7 +24,7 @@
 
 namespace local_slow_queries\table;
 
-use classes\service\backtrace_service;
+use local_slow_queries\service\backtrace_service;
 use coding_exception;
 use core\exception\moodle_exception;
 use core_text;
