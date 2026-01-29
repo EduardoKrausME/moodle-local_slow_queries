@@ -25,7 +25,7 @@
 require_once(__DIR__ . "/../../config.php");
 require_once($CFG->libdir . "/tablelib.php");
 
-use local_slow_queries\local\repository\queries_repository;
+use classes\repository\queries_repository;
 use local_slow_queries\table\home_table;
 
 require_login();
@@ -98,7 +98,7 @@ $table = new home_table("local_slow_queries_home", $PAGE->url);
 $total = $repo->count_grouped_filtered($search, $minexec);
 $table->pagesize(30, $total);
 
-list($from, $params) = $repo->get_grouped_from_for_table($search, $minexec);
+[$from, $params] = $repo->get_grouped_from_for_table($search, $minexec);
 $table->set_sql("id, sqltext, backtrace, cnt, avgtime, iscron", $from, "1=1", $params);
 
 ob_start();

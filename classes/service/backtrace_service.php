@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_slow_queries\local\service;
+namespace classes\service;
 
 /**
  * Utilities to interpret backtraces stored in log_queries.

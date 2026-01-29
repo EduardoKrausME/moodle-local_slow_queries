@@ -24,11 +24,11 @@
 
 namespace local_slow_queries\table;
 
+use classes\service\backtrace_service;
 use coding_exception;
 use core\exception\moodle_exception;
 use core_text;
 use html_writer;
-use local_slow_queries\local\service\backtrace_service;
 use moodle_url;
 use stdClass;
 use table_sql;

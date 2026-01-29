@@ -15,6 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * phpcs:disable moodle.Strings.ForbiddenStrings.Found
  * index_suggestion_service.php
  *
  * @package   local_slow_queries
@@ -22,7 +23,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_slow_queries\local\service;
+namespace classes\service;
 
 use dml_exception;
 

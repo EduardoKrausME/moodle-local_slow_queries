@@ -15,6 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * phpcs:disable moodle.Strings.ForbiddenStrings.Found
  * detail.php
  *
  * @package   local_slow_queries
@@ -24,11 +25,11 @@
 
 require_once(__DIR__ . "/../../config.php");
 
-use local_slow_queries\local\repository\queries_repository;
-use local_slow_queries\local\service\backtrace_service;
-use local_slow_queries\local\service\index_suggestion_service;
-use local_slow_queries\local\service\sql_params_service;
-use local_slow_queries\local\service\table_schema_service;
+use classes\repository\queries_repository;
+use classes\service\backtrace_service;
+use classes\service\index_suggestion_service;
+use classes\service\sql_params_service;
+use classes\service\table_schema_service;
 
 require_login();
 

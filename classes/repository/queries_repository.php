@@ -22,12 +22,10 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_slow_queries\local\repository;
+namespace classes\repository;
 
-use ddl_exception;
 use dml_exception;
 use stdClass;
-use xmldb_table;
 
 /**
  * Data access layer for the log_queries table.
