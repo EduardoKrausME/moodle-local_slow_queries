@@ -34,7 +34,7 @@ $context = context_system::instance();
 require_capability("moodle/site:config", $context);
 
 $PAGE->set_context($context);
-$PAGE->set_url(new moodle_url("/local/slow_queries/index.php"));
+$PAGE->set_url(new moodle_url("/local/slow_queries/"));
 $PAGE->set_pagelayout("report");
 $PAGE->set_title(get_string("index_title", "local_slow_queries"));
 $PAGE->set_heading(get_string("index_title", "local_slow_queries"));
