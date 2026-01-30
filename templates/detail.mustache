@@ -71,7 +71,7 @@
         <div class="card h-100">
             <div class="card-header">
                 <div class="fw-semibold">{{#str}}detail_sql_expanded, local_slow_queries{{/str}}</div>
-                <div class="small text-muted">Best-effort expansion for analysis (display only)</div>
+                <div class="small text-muted">{{#str}}detail_sql_expanded_desc, local_slow_queries{{/str}}</div>
             </div>
             <div class="card-body">
                 <textarea class="lsq-pre" readonly>{{expandedsql}}</textarea>
@@ -79,6 +79,12 @@
         </div>
     </div>
 </div>
+
+{{#timeline_html}}
+    <div class="card mt-3">
+        {{{timeline_html}}}
+    </div>
+{{/timeline_html}}
 
 <div class="card mt-3">
     <div class="card-header">
@@ -102,7 +108,8 @@
             <div class="d-flex flex-column gap-3">
                 {{#suggestions}}
                     <div class="p-3 rounded-3 border" style="border-color: rgba(0,0,0,.06);">
-                        <div class="fw-semibold mb-1">{{table}} <span class="text-muted fw-normal">({{columns}})</span></div>
+                        <div class="fw-semibold mb-1">{{table}} <span class="text-muted fw-normal">({{columns}})</span>
+                        </div>
                         <div class="small text-muted mb-2">{{reason}}</div>
                         <pre class="lsq-pre">{{create}}</pre>
                     </div>
