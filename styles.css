@@ -1,3 +1,6 @@
+.local-slow-queries {
+  /* Timeline */
+}
 .local-slow-queries .lsq-sql-preview {
   max-width: 720px;
   overflow: hidden;
@@ -42,4 +45,37 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.local-slow-queries .lsq-axis {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  width: 100%;
+}
+.local-slow-queries .lsq-day-label {
+  width: 110px;
+  flex: 0 0 110px;
+}
+.local-slow-queries .lsq-timeline-grid {
+  position: relative;
+  height: 30px;
+  border-radius: 12px;
+  background-color: #fbfbfc;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: calc(100% / 24) 100%;
+  background-repeat: repeat;
+}
+.local-slow-queries .lsq-timeline-grid .lsq-timeline-seg {
+  position: absolute;
+  top: 3px;
+  height: 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  background: rgba(13, 110, 253, 0.45);
+  min-width: 5px;
+}
+.local-slow-queries .lsq-timeline-grid .lsq-timeline-seg:hover {
+  background: rgba(13, 110, 253, 0.6);
 }
