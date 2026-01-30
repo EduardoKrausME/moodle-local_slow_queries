@@ -55,16 +55,16 @@ class backtrace_service {
         $lines = preg_split("/\r\n|\n|\r/", $backtrace);
         $lines = array_values(array_filter(array_map("trim", $lines)));
 
-        $dmlindex = null;
+        $dmlindex = 0;
         foreach ($lines as $i => $line) {
-            if (strpos($line, "/lib/dml/") !== false) {
+            if (strpos($line, "lib/dml") === false) {
                 $dmlindex = $i;
                 break;
             }
         }
 
         $candidate = null;
-        if ($dmlindex !== null && isset($lines[$dmlindex + 1])) {
+        if ($dmlindex !== null && isset($lines[$dmlindex + 2])) {
             $candidate = $lines[$dmlindex + 1];
         } else if (!empty($lines)) {
             $candidate = $lines[0];
