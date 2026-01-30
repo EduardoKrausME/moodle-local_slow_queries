@@ -48,7 +48,7 @@ class timeline_service {
         global $OUTPUT;
 
         // Timeline rendering settings.
-        $secpx = .1  ;           // 1 second = 3px (visual scale).
+        $secpx = .1;           // 1 second = 3px (visual scale).
         $maxwidthpx = 280;    // Cap a single bar width.
         $minwidthpx = 3;      // Minimum visible width.
 
@@ -85,8 +85,8 @@ class timeline_service {
                 continue;
             }
 
-            $secondsinDay = max(0, min(DAYSECS - 1, $querie->timelogged - $daystart));
-            $leftpct = ($secondsinDay / DAYSECS) * 100.0;
+            $secondsinday = max(0, min(DAYSECS - 1, $querie->timelogged - $daystart));
+            $leftpct = ($secondsinday / DAYSECS) * 100.0;
 
             $widthpx = round($querie->exectime * $secpx);
             $widthpx = max($minwidthpx, min($maxwidthpx, $widthpx));
