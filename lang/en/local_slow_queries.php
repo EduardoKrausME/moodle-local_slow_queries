@@ -58,5 +58,5 @@ $string['privacy:metadata'] = 'The Slow queries plugin does not store any person
 $string['timeline_calendar'] = 'Calendar timeline';
 $string['timeline_last_7'] = '<strong>{$a}</strong> executions in the last 7 days';
 $string['timeline_scale'] = 'The scale corresponds to 1 second for {$a} pixels';
-$string['timeline_totaltime'] = 'In total, the database spent <strong>{$a}</strong> executing these SQL statements';
 $string['timeline_title'] = 'Queries timeline';
+$string['timeline_totaltime'] = 'In total, the database spent <strong>{$a}</strong> executing these SQL statements';
