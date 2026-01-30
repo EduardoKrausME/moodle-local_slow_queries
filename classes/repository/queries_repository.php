@@ -172,8 +172,8 @@ class queries_repository {
         $query = "
             SELECT id, timelogged, exectime
               FROM {log_queries}
-             WHERE timelogged >= :from 
-               AND timelogged <  :to 
+             WHERE timelogged >= :from
+               AND timelogged <  :to
                AND sqltext    =  :sqltext
           ORDER BY timelogged ASC";
 
