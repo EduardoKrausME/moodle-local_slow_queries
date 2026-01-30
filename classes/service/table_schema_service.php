@@ -15,7 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * phpcs:disable moodle.Strings.ForbiddenStrings.Found Generic.CodeAnalysis.EmptyStatement.DetectedCatch
+ * phpcs:disable moodle.Strings.ForbiddenStrings.Found
+ * phpcs:disable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
  * table_schema_service.php
  *
  * @package   local_slow_queries
