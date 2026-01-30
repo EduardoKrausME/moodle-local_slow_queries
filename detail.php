@@ -113,8 +113,9 @@ echo $OUTPUT->header();
 echo $OUTPUT->render_from_template("local_slow_queries/detail", $template);
 
 $prompt = [];
-$prompt[] = "The SQL below is slow ({$querie->avgtime}s). " .
-    "Analyze it and suggest realistic optimizations and indexes for Moodle to make it faster.\n";
+$prompt[] = "The SQL query below is very slow (~{$querie->avgtime}s). ";
+$prompt[] = "Analyze the execution plan and propose realistic index optimizations for Moodle ({$DB->get_dbfamily()}), " .
+    "explaining the expected impact and possible trade-offs.\n";
 $prompt[] = "# SQL:\n```SQL\n{$expanded}\n```\n";
 $prompt[] = "# Tables involved (metadata):\n{$schemablock}\n";
 $explainsql = explain_service::explain_to_markdown($expanded);
