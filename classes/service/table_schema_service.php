@@ -96,12 +96,18 @@ class table_schema_service {
             try {
                 $cols = $DB->get_columns($moodlename);
             } catch (Throwable) {
-                $out[] = "## TABLE {$rawname} (unavailable via metadata)";
-                $out[] = "";
                 continue;
             }
 
             $out[] = "## TABLE {$rawname}";
+
+            try {
+                $countrows = $DB->count_records_select($moodlename, "");
+                $countrows = number_format($countrows);
+                $out[] = "Row count: {$countrows}";
+            } catch (Throwable) { // phpcs:disable
+            }
+
             $out[] = "### Columns:";
             foreach ($cols as $c) {
                 $type = $c->type ?? "";
