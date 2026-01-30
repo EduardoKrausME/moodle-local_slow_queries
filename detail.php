@@ -120,7 +120,7 @@ $prompt[] = "# SQL:\n```SQL\n{$expanded}\n```\n";
 $prompt[] = "# Tables involved (metadata):\n{$schemablock}\n";
 $explainsql = explain_service::explain_to_markdown($expanded);
 if ($explainsql) {
-    $prompt[] = "{$explainsql}\n";
+    $prompt[] = "# EXPLAIN Statement:\n{$explainsql}\n";
 }
 $prompt[] = "# Backtrace origin:\n{$querie->backtrace}";
 $prompt[] = "# Return the explanation in " . ($SESSION->lang ?? $USER->lang);

@@ -87,10 +87,6 @@ class explain_service {
      * @return string Markdown table.
      */
     private static function build_markdown_table(array $columns, array $rows): string {
-        $out = [
-            "# EXPLAIN output SQL:",
-        ];
-
         // Header.
         $out[] = "| " . implode(" | ", array_map([self::class, "md_escape"], $columns)) . " |";
 
