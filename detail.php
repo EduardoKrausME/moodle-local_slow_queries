@@ -27,6 +27,7 @@ require_once(__DIR__ . "/../../config.php");
 
 use local_slow_queries\repository\queries_repository;
 use local_slow_queries\service\backtrace_service;
+use local_slow_queries\service\explain_service;
 use local_slow_queries\service\index_suggestion_service;
 use local_slow_queries\service\sql_params_service;
 use local_slow_queries\service\table_schema_service;
@@ -116,6 +117,10 @@ $prompt[] = "The SQL below is slow ({$querie->avgtime}s). " .
     "Analyze it and suggest realistic optimizations and indexes for Moodle to make it faster.\n";
 $prompt[] = "# SQL:\n```SQL\n{$expanded}\n```\n";
 $prompt[] = "# Tables involved (metadata):\n{$schemablock}\n";
+$explainsql = explain_service::explain_to_markdown($expanded);
+if ($explainsql) {
+    $prompt[] = "{$explainsql}\n";
+}
 $prompt[] = "# Backtrace origin:\n{$querie->backtrace}";
 $prompt[] = "# Return the explanation in " . ($SESSION->lang ?? $USER->lang);
 echo $OUTPUT->render_from_template("local_slow_queries/detail_prompt", [
