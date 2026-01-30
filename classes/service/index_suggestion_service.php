@@ -89,7 +89,7 @@ class index_suggestion_service {
         // Remove duplicates.
         $uniq = [];
         foreach ($suggestions as $s) {
-            $key = $s["table"] . ":" . implode(",", $s["columns"]);
+            $key = "{$s["table"]}:" . implode(",", $s["columns"]);
             $uniq[$key] = $s;
         }
 
@@ -281,7 +281,7 @@ class index_suggestion_service {
                 $single = [$c];
                 $bytable[$t]["candidates"][] = [
                     "columns" => $single,
-                    "reason" => "Single-column equality/join key: " . $c,
+                    "reason" => "Single-column equality/join key: {$c}",
                 ];
             }
 

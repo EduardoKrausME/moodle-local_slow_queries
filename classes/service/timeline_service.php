@@ -99,7 +99,7 @@ class timeline_service {
             $buckets[$key]["segments"][] = [
                 "left" => $leftpct,
                 "width" => $widthpx,
-                "title" => $time . " • " . format_float($querie->exectime, 3) . "s",
+                "title" => "{$time} • " . format_float($querie->exectime, 3) . "s",
             ];
         }
 

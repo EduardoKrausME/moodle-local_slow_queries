@@ -83,7 +83,7 @@ class index_metadata_service {
             }
 
             if ($def !== "") {
-                $lines[] = "- {$name} ({$tag}): " . $def;
+                $lines[] = "- {$name} ({$tag}): {$def}";
                 continue;
             }
 

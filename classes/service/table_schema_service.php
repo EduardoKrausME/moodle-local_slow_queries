@@ -108,7 +108,7 @@ class table_schema_service {
                 $len = isset($c->max_length) && $c->max_length ? "({$c->max_length})" : "";
                 $nn = !empty($c->not_null) ? " NOT NULL" : "";
                 $def = property_exists($c, "default_value") && $c->default_value !== null ? " DEFAULT {$c->default_value}" : "";
-                $out[] = "  - {$c->name}: " . $type . $len . $nn . $def;
+                $out[] = "  - {$c->name}: {$type}{$len}{$nn}{$def}";
             }
 
             // Existing indexes (best-effort).
@@ -116,7 +116,7 @@ class table_schema_service {
             $indexes = index_metadata_service::get_indexes($prefix, $moodlename);
             $idxblock = index_metadata_service::format_indexes_block($indexes);
             foreach (preg_split("/\r\n|\n|\r/", $idxblock) as $line) {
-                $out[] = "  " . $line;
+                $out[] = "  {$line}";
             }
 
             $out[] = "";
