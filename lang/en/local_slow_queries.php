@@ -30,6 +30,7 @@ $string['col_cron'] = 'CRON';
 $string['col_origin'] = 'Backtrace';
 $string['col_parameters'] = 'Parameters';
 $string['col_sqlpreview'] = 'SQL';
+$string['comments_title'] = 'Comments';
 $string['detail_indexes'] = 'Possible missing indexes';
 $string['detail_indexes_none'] = 'No index suggestions detected for this query.';
 $string['detail_indexes_notice'] = 'Suggestions are heuristic. Test carefully on a staging environment and validate with EXPLAIN/ANALYZE.';
