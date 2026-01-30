@@ -30,6 +30,7 @@ use local_slow_queries\service\backtrace_service;
 use local_slow_queries\service\index_suggestion_service;
 use local_slow_queries\service\sql_params_service;
 use local_slow_queries\service\table_schema_service;
+use local_slow_queries\service\timeline_service;
 
 require_login();
 
@@ -104,6 +105,7 @@ $template = [
     "expandedsql" => $expanded,
     "hassuggestions" => !empty($suggestionsview),
     "suggestions" => $suggestionsview,
+    "timeline_html" => timeline_service::create_html($querie, $repo),
 ];
 
 echo $OUTPUT->header();

@@ -156,4 +156,31 @@ class queries_repository {
 
         return [implode(" AND ", $wheres), $params];
     }
+
+    /**
+     * Loads rows for a given SQL (best-effort LIKE match) in a time period.
+     *
+     * @param int $from Unix timestamp (inclusive).
+     * @param int $to Unix timestamp (exclusive).
+     * @param string $sql SQL text to match.
+     * @return array List of rows (id, timelogged, exectime).
+     * @throws dml_exception
+     */
+    public function get_for_sql_like_period(int $from, int $to, string $sql): array {
+        global $DB;
+
+        $query = "
+            SELECT id, timelogged, exectime
+              FROM {log_queries}
+             WHERE timelogged >= :from 
+               AND timelogged <  :to 
+               AND sqltext    =  :sqltext
+          ORDER BY timelogged ASC";
+
+        return $DB->get_records_sql($query, [
+            "from" => $from,
+            "to" => $to,
+            "sqltext" => $sql,
+        ]);
+    }
 }
