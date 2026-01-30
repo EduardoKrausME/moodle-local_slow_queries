@@ -17,6 +17,7 @@
 /**
  * phpcs:disable moodle.Strings.ForbiddenStrings.Found
  * phpcs:disable Generic.CodeAnalysis.EmptyStatement.DetectedCatch
+ * phpcs:disable Squiz.Commenting.EmptyCatchComment.Missing
  * table_schema_service.php
  *
  * @package   local_slow_queries
