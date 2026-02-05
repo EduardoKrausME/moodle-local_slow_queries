@@ -24,7 +24,7 @@
 
 require_once(__DIR__ . "/../../config.php");
 require_once("{$CFG->libdir}/tablelib.php");
-require_once($CFG->libdir.'/adminlib.php');
+require_once("{$CFG->libdir}/adminlib.php");
 
 use local_slow_queries\check\dboptions;
 use local_slow_queries\repository\queries_repository;

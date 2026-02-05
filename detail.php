@@ -24,8 +24,7 @@
  */
 
 require_once(__DIR__ . "/../../config.php");
-require_once($CFG->libdir.'/adminlib.php');
-
+require_once("{$CFG->libdir}/adminlib.php");
 
 use local_slow_queries\repository\queries_repository;
 use local_slow_queries\service\backtrace_service;
