@@ -30,7 +30,7 @@ use local_slow_queries\check\dboptions;
 use local_slow_queries\repository\queries_repository;
 use local_slow_queries\table\home_table;
 
-admin_externalpage_setup('localslowqueries', '', null, '', ['pagelayout' => 'report']);
+admin_externalpage_setup("localslowqueries", "", null, "", ["pagelayout" => "report"]);
 
 $PAGE->set_url(new moodle_url("/local/slow_queries/"));
 $PAGE->set_title(get_string("index_title", "local_slow_queries"));
