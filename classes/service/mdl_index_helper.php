@@ -135,7 +135,7 @@ class mdl_index_helper {
         // Edge-case fallback: still too long (e.g., many columns and all are 1 char already).
         if (strlen($name) > $maxbytes) {
             $hash = substr(sha1(implode("_", $origcolumns)), 0, 6);
-            $keep = max(0, $maxbytes - 7); // "_" + 6 hash chars
+            $keep = max(0, $maxbytes - 7); // Start "_" + 6 hash chars.
             $name = substr($name, 0, $keep) . "_{$hash}";
         }
 
