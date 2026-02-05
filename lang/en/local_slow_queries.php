@@ -24,6 +24,13 @@
 
 defined('MOODLE_INTERNAL') || die;
 
+$string['checkperformance_slowqueries_action'] = 'View slow queries';
+$string['checkperformance_slowqueries_details_found'] = 'Found <strong>{$a->count}</strong> queries that took more than <strong>{$a->seconds}s</strong> - see <a href="{$a->url}">Slow queries report</a>';
+$string['checkperformance_slowqueries_details_morethan'] = 'There are <strong>{$a->count}</strong> queries over <strong>{$a->seconds}s</strong> - see <a href="{$a->url}">Slow queries report</a>';
+$string['checkperformance_slowqueries_name'] = 'Slow queries affecting your Moodle performance';
+$string['checkperformance_slowqueries_none'] = 'No query took longer than 5s.';
+$string['checkperformance_slowqueries_notconfigured'] = 'Not configured';
+$string['checkperformance_slowqueries_summary_found'] = 'Found <strong>{$a->count}</strong> queries that took more than {$a->seconds}s';
 $string['col_avgtime'] = 'Avg time (s)';
 $string['col_count'] = 'Count';
 $string['col_cron'] = 'CRON';

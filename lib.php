@@ -22,6 +22,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+use local_slow_queries\check\performance\slow_queries;
+
 /**
  * Adds the plugin entry to the global navigation.
  *
@@ -48,4 +50,15 @@ function local_slow_queries_extend_navigation_global(global_navigation $navigati
         "local_slow_queries",
         new pix_icon("i/report", "")
     );
+}
+
+/**
+ * Function local_slow_queries_performance_checks
+ *
+ * @return slow_queries[]
+ */
+function local_slow_queries_performance_checks() {
+    return [
+        new slow_queries(),
+    ];
 }

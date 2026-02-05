@@ -80,7 +80,6 @@ class queries_repository {
                      WHERE {$where}
                   GROUP BY sqltext
                    ) x";
-
         return $DB->count_records_sql($sql, $params);
     }
 

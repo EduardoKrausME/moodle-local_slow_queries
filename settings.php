@@ -25,10 +25,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($hassiteconfig) {
-    $externalpage = new admin_externalpage(
-        'local_slow_queries',
-        get_string('pluginname', 'local_slow_queries'),
-        "{$CFG->wwwroot}/local/slow_queries/"
-    );
+    $pluginname = get_string('pluginname', 'local_slow_queries');
+    $externalpage = new admin_externalpage('localslowqueries', $pluginname, "{$CFG->wwwroot}/local/slow_queries/");
     $ADMIN->add('reports', $externalpage);
 }
