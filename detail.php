@@ -24,6 +24,8 @@
  */
 
 require_once(__DIR__ . "/../../config.php");
+require_once($CFG->libdir.'/adminlib.php');
+
 
 use local_slow_queries\repository\queries_repository;
 use local_slow_queries\service\backtrace_service;
@@ -33,16 +35,11 @@ use local_slow_queries\service\sql_params_service;
 use local_slow_queries\service\table_schema_service;
 use local_slow_queries\service\timeline_service;
 
-require_login();
-
-$context = context_system::instance();
-require_capability("moodle/site:config", $context);
+admin_externalpage_setup('localslowqueries', '', null, '', ['pagelayout' => 'report']);
 
 $id = required_param("id", PARAM_INT);
 
-$PAGE->set_context($context);
 $PAGE->set_url(new moodle_url("/local/slow_queries/detail.php", ["id" => $id]));
-$PAGE->set_pagelayout("report");
 $PAGE->set_title(get_string("detail_title", "local_slow_queries"));
 $PAGE->set_heading(get_string("detail_title", "local_slow_queries"));
 $PAGE->add_body_class("local-slow-queries");

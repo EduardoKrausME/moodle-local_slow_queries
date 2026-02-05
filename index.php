@@ -24,52 +24,18 @@
 
 require_once(__DIR__ . "/../../config.php");
 require_once("{$CFG->libdir}/tablelib.php");
+require_once($CFG->libdir.'/adminlib.php');
 
+use local_slow_queries\check\dboptions;
 use local_slow_queries\repository\queries_repository;
 use local_slow_queries\table\home_table;
 
-require_login();
+admin_externalpage_setup('localslowqueries', '', null, '', ['pagelayout' => 'report']);
 
-$context = context_system::instance();
-require_capability("moodle/site:config", $context);
-
-$PAGE->set_context($context);
 $PAGE->set_url(new moodle_url("/local/slow_queries/"));
-$PAGE->set_pagelayout("report");
 $PAGE->set_title(get_string("index_title", "local_slow_queries"));
 $PAGE->set_heading(get_string("index_title", "local_slow_queries"));
 $PAGE->add_body_class("local-slow-queries");
-
-// Detect logslow configuration.
-$logslowraw = null;
-if (!empty($CFG->dboptions) && is_array($CFG->dboptions) && array_key_exists("logslow", $CFG->dboptions)) {
-    $logslowraw = $CFG->dboptions["logslow"];
-}
-
-$logslowenabled = false;
-if ($logslowraw === true) {
-    $logslowenabled = true;
-} else if (is_numeric($logslowraw) && (float)$logslowraw > 0) {
-    $logslowenabled = true;
-} else if (is_string($logslowraw) && strtolower(trim($logslowraw)) === "true") {
-    $logslowenabled = true;
-}
-
-$logslowdisplay = "";
-if (is_bool($logslowraw)) {
-    $logslowdisplay = $logslowraw ? "true" : "false";
-} else if ($logslowraw !== null) {
-    $logslowdisplay = $logslowraw;
-}
-
-$logslowconfigsnippet = "....\n";
-$logslowconfigsnippet .= "\$CFG->prefix    = 'mdl_';\n";
-$logslowconfigsnippet .= "\$CFG->dboptions = array(\n";
-$logslowconfigsnippet .= "    ....\n";
-$logslowconfigsnippet .= "    'logslow'     => 3, // 3s.\n";
-$logslowconfigsnippet .= "    ....\n";
-$logslowconfigsnippet .= ");\n";
-$logslowconfigsnippet .= "...\n";
 
 $repo = new queries_repository();
 
@@ -79,17 +45,13 @@ echo $OUTPUT->header();
 $search = optional_param("search", "", PARAM_RAW_TRIMMED);
 $minexec = optional_param("minexec", 3, PARAM_FLOAT);
 
+echo $OUTPUT->render_from_template("local_slow_queries/install", dboptions::test_logslow());
+
 $template = [
     "reporturl" => (new moodle_url("/local/slow_queries/report.php"))->out(false),
-
-    "showlogslowwarning" => !$logslowenabled,
-    "logslowvalue" => $logslowdisplay,
-    "logslowconfigsnippet" => $logslowconfigsnippet,
-
     "search" => $search,
     "minexec" => $minexec,
 ];
-
 echo $OUTPUT->render_from_template("local_slow_queries/index", $template);
 
 // Grouped table: GROUP BY sqltext, showing COUNT(*) and AVG(exectime).
