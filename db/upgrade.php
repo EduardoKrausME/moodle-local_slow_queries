@@ -25,9 +25,6 @@
 use local_slow_queries\service\mdl_index_helper;
 
 /**
- * phpcs:disable Squiz.PHP.CommentedOutCode.Found
- * phpcs:disable moodle.Commenting.InlineComment.NoSpaceBefore
- *
  * Upgrades plugin database schema and data.
  *
  * @param int $oldversion The old plugin version.
@@ -46,8 +43,6 @@ function xmldb_local_slow_queries_upgrade(int $oldversion): bool {
     mdl_index_helper::ensure_index('course_completions', ['reaggregate', 'timecompleted', 'course', 'userid']);
 
     // MDL-87670.
-    //mdl_index_helper::mtrace_tracker_issue("MDL-87670", "Forum performance");
-    //mtrace(mdl_index_helper::$message);
 
     // MDL-87650.
     mdl_index_helper::mtrace_tracker_issue("MDL-87650", "Forum report took Moodle down");
