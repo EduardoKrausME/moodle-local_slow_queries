@@ -25,6 +25,9 @@
 use local_slow_queries\service\mdl_index_helper;
 
 /**
+ * phpcs:disable Squiz.PHP.CommentedOutCode.Found
+ * phpcs:disable moodle.Commenting.InlineComment.NoSpaceBefore
+ *
  * Upgrades plugin database schema and data.
  *
  * @param int $oldversion The old plugin version.
