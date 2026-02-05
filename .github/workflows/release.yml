@@ -87,8 +87,8 @@ jobs:
 
       - name: Validate PLUGIN matches version.php (and tag matches release)
         run: |
-          COMPONENT=$(php -r 'define("MOODLE_INTERNAL", true); $plugin=new stdClass(); require "version.php"; echo $plugin->component ?? "";')
-          RELEASE=$(php -r 'define("MOODLE_INTERNAL", true); $plugin=new stdClass(); require "version.php"; echo $plugin->release ?? "";')
+          COMPONENT=$(php -r 'define("MOODLE_INTERNAL", true);define("MATURITY_STABLE", true); $plugin=new stdClass(); require "version.php"; echo $plugin->component ?? "";')
+          RELEASE=$(php -r 'define("MOODLE_INTERNAL", true);define("MATURITY_STABLE", true); $plugin=new stdClass(); require "version.php"; echo $plugin->release ?? "";')
 
           echo "version.php component: $COMPONENT"
           echo "version.php release:   $RELEASE"
