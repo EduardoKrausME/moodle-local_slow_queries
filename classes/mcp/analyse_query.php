@@ -33,6 +33,8 @@ use local_slow_queries\service\table_schema_service;
  */
 final class analyse_query extends read_base {
     /**
+     * Return the unique MCP tool identifier.
+     *
      * @return string
      */
     public function get_name(): string {
@@ -40,6 +42,8 @@ final class analyse_query extends read_base {
     }
 
     /**
+     * Return the translated MCP tool title.
+     *
      * @return string
      */
     public function get_title(): string {
@@ -47,6 +51,8 @@ final class analyse_query extends read_base {
     }
 
     /**
+     * Return the translated MCP tool description.
+     *
      * @return string
      */
     public function get_description(): string {
@@ -54,6 +60,8 @@ final class analyse_query extends read_base {
     }
 
     /**
+     * Define the accepted MCP tool arguments.
+     *
      * @return array
      */
     public function get_input_schema(): array {
@@ -63,6 +71,8 @@ final class analyse_query extends read_base {
     }
 
     /**
+     * Execute an authorized tool operation.
+     *
      * @param array $arguments Input.
      * @param authenticated_identity $identity Administrator.
      * @return array

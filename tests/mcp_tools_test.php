@@ -46,6 +46,8 @@ use moodle_exception;
  */
 final class mcp_tools_test extends advanced_testcase {
     /**
+     * Skip MCP integration tests if the optional dependency is absent.
+     *
      * @return void
      */
     private function require_mcp(): void {

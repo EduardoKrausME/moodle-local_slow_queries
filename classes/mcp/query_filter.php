@@ -34,6 +34,8 @@ final class query_filter {
     public const MAX_LIMIT = 40;
 
     /**
+     * Declare a bounded search filter schema.
+     *
      * @return array
      */
     public static function schema(): array {
@@ -47,6 +49,8 @@ final class query_filter {
     }
 
     /**
+     * Normalize and validate search filters.
+     *
      * @param array $arguments Tool arguments.
      * @return array{string, float, int, int, bool}
      */

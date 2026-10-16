@@ -35,6 +35,8 @@ use stdClass;
  */
 final class report_service {
     /**
+     * Check availability of the SQL logging table.
+     *
      * @return bool
      */
     public static function log_table_exists(): bool {
@@ -43,6 +45,8 @@ final class report_service {
     }
 
     /**
+     * Require logged queries to be available.
+     *
      * @return void
      */
     public static function require_log_table(): void {

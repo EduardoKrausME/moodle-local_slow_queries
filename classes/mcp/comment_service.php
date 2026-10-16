@@ -66,6 +66,8 @@ final class comment_service {
     }
 
     /**
+     * Reject a stale expected comment state.
+     *
      * @param string $sqltext Exact logged SQL.
      * @param string $expected Caller-provided current comment hash.
      * @return void
@@ -78,6 +80,8 @@ final class comment_service {
     }
 
     /**
+     * Validate and sanitize a proposed investigation note.
+     *
      * @param string $text User-supplied note.
      * @return string
      */

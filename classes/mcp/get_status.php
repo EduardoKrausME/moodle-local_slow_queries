@@ -31,6 +31,8 @@ use local_mcp\security\authenticated_identity;
  */
 final class get_status extends read_base {
     /**
+     * Return the unique MCP tool name.
+     *
      * @return string
      */
     public function get_name(): string {
@@ -38,6 +40,8 @@ final class get_status extends read_base {
     }
 
     /**
+     * Return the translated MCP tool title.
+     *
      * @return string
      */
     public function get_title(): string {
@@ -45,6 +49,8 @@ final class get_status extends read_base {
     }
 
     /**
+     * Return the translated MCP tool description.
+     *
      * @return string
      */
     public function get_description(): string {
@@ -52,6 +58,8 @@ final class get_status extends read_base {
     }
 
     /**
+     * Declare the input schema for the MCP tool.
+     *
      * @return array
      */
     public function get_input_schema(): array {
@@ -61,6 +69,8 @@ final class get_status extends read_base {
     }
 
     /**
+     * Execute the authorized MCP operation.
+     *
      * @param array $arguments Input.
      * @param authenticated_identity $identity Administrator.
      * @return array
