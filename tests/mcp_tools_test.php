@@ -151,7 +151,7 @@ final class mcp_tools_test extends advanced_testcase {
      * @return void
      */
     public function test_read_projections_and_write_preview(): void {
-        global $DB;
+        global $DB, $USER;
         $this->resetAfterTest();
         $this->require_mcp();
         $this->setAdminUser();
@@ -169,7 +169,7 @@ final class mcp_tools_test extends advanced_testcase {
                 "timelogged" => time(),
             ]);
             $identity = new \local_mcp\security\authenticated_identity(
-                (int)$this->getUser()->id, "oauth", ["read", "write"]
+                (int)$USER->id, "oauth", ["read", "write"]
             );
             $list = (new list_queries())->execute(["min_seconds" => 3], $identity);
             $this->assertGreaterThanOrEqual(1, $list["total_groups"]);
