@@ -43,12 +43,29 @@ final class comment_service {
      */
     public static function find(string $sqltext): ?stdClass {
         global $DB;
-        $rows = $DB->get_records("local_slow_queries_comments",
-            ["sqltext" => $sqltext], "id ASC", "id,comments,timemodified", 0, 2);
-        if (count($rows) > 1) {
-            throw new moodle_exception("mcpduplicatecomments", "local_slow_queries");
+        // Moodle's record APIs do not permit direct equality conditions on TEXT fields.
+        // Compare a portable prefix in SQL, then check complete text in PHP to avoid
+        // false matches from shared prefixes or case-insensitive database collations.
+        $where = $DB->sql_compare_text("sqltext", 255) . " = " .
+            $DB->sql_compare_text(":sqltext", 255);
+        $recordset = $DB->get_recordset_select("local_slow_queries_comments", $where,
+            ["sqltext" => $sqltext],
+            "id ASC", "id,sqltext,comments,timemodified");
+        $match = null;
+        try {
+            foreach ($recordset as $row) {
+                if ((string)$row->sqltext !== $sqltext) {
+                    continue;
+                }
+                if ($match !== null) {
+                    throw new moodle_exception("mcpduplicatecomments", "local_slow_queries");
+                }
+                $match = $row;
+            }
+        } finally {
+            $recordset->close();
         }
-        return $rows ? reset($rows) : null;
+        return $match;
     }
 
     /**

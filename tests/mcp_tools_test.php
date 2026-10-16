@@ -83,11 +83,31 @@ final class mcp_tools_test extends advanced_testcase {
         $sql = "SELECT id FROM {course} WHERE id = 123456";
         $original = comment_service::state_hash($sql);
         $result = comment_service::save($sql, "Index review pending", $original);
-        $this->assertSame(1, $DB->count_records("local_slow_queries_comments", ["sqltext" => $sql]));
+        $this->assertSame(1, $DB->count_records("local_slow_queries_comments"));
         $this->assertSame("Index review pending", comment_service::find($sql)->comments);
         $this->assertNotSame($original, $result["state_hash"]);
         $this->expectException(moodle_exception::class);
         comment_service::save($sql, "Accidental stale overwrite", $original);
+    }
+
+    /**
+     * Queries with identical long prefixes must not share investigation notes.
+     *
+     * @return void
+     */
+    public function test_comment_matching_distinguishes_long_shared_prefixes(): void {
+        $this->resetAfterTest();
+        $prefix = "SELECT " . str_repeat("a", 260);
+        $firstsql = $prefix . " FROM {course}";
+        $secondsql = $prefix . " FROM {user}";
+        $first = comment_service::save($firstsql, "Course investigation",
+            comment_service::state_hash($firstsql));
+        $this->assertNull(comment_service::find($secondsql));
+        $second = comment_service::save($secondsql, "User investigation",
+            comment_service::state_hash($secondsql));
+        $this->assertNotSame($first["comment_id"], $second["comment_id"]);
+        $this->assertSame("Course investigation", comment_service::find($firstsql)->comments);
+        $this->assertSame("User investigation", comment_service::find($secondsql)->comments);
     }
 
     /**
