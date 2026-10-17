@@ -110,7 +110,7 @@ This is critical because the plugin can reveal:
 
 ## Optional MCP integration (ChatGPT)
 
-If [local_mcp](https://github.com/EduardoKrausME/moodle-local_mcp) is installed,
+If [local_mcp](https://eduardokrausme.github.io/moodle-local_mcp/) is installed,
 its discovery mechanism loads `local_slow_queries\mcp\provider` from
 `classes/mcp/provider.php`. This integration is optional: it adds no extra
 server process, no database tables and no hard dependency in `version.php`.
