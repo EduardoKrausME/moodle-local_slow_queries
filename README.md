@@ -107,7 +107,6 @@ This is critical because the plugin can reveal:
 - Compare max/avg trends weekly
 - Identify new callers (components) from backtrace changes
 
-
 ## Optional MCP integration (ChatGPT)
 
 If [local_mcp](https://eduardokrausme.github.io/moodle-local_mcp/) is installed,
