@@ -170,5 +170,5 @@ The native comment form also uses this shared service: it requires a
 Moodle session key, escapes displayed comments, and refuses to overwrite a
 more recent edit. No `upgrade.php` change is required.
 
-After installing or updating the plugin, refresh the ChatGPT MCP
+When the MCP provider changes, refresh the ChatGPT MCP
 connection so the new tools are discovered.
